@@ -1,0 +1,55 @@
+pipeline {
+    agent any
+    
+    environment {
+        DOCKER_HUB_CREDENTIALS = credentials('docker-creds')   
+        KUBECONFIG = credentials('Kubeconfig')                 
+        dockerImage = ''
+    }
+
+    stages {
+        stage('Build the image') {
+            steps {
+                script {
+                    // Remove existing directory if it exists
+                    sh 'rm -rf HW2_repository'
+                    // Clone the repository
+                    sh 'git clone https://github.com/AKHILNAKKA5/HW2_repository.git'
+                    // Change to the HW2_repository directory
+                    sh 'cd HW2_repository && docker build -t anakka5/hw2:${BUILD_NUMBER} .'
+                }
+            }
+        }
+
+        stage('Push to Docker Hub') {
+            steps {
+                script {
+                    sh "docker login -u $DOCKER_HUB_CREDENTIALS_USR -p $DOCKER_HUB_CREDENTIALS_PSW"
+                    sh 'docker push anakka5/hw2:${BUILD_NUMBER}'
+                }
+            }
+        }
+
+        stage('Update Deployment File') {
+            steps {
+                script {
+                    def tag = currentBuild.number
+                    // Update image tag in deployment.yaml
+                    sh "sed -i 's|image: anakka5/hw2:.*|image: anakka5/hw2:${tag}|' HW2_repository/deployment.yaml"
+                }
+            }
+        }
+
+        stage('Deploy to Kubernetes') {
+            steps {
+                script {
+                    // Use Kubeconfig credentials to deploy to Kubernetes
+                    withCredentials([file(credentialsId: 'Kubeconfig', variable: 'KUBECONFIG')]) {
+                        sh 'kubectl --kubeconfig=$KUBECONFIG apply -f HW2_repository/deployment.yaml'
+                        sh 'kubectl --kubeconfig=$KUBECONFIG apply -f HW2_repository/service.yaml'
+                    }
+                }
+            }
+        }
+    }
+}
