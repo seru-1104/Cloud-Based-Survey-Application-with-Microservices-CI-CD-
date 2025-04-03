@@ -1,0 +1,32 @@
+apiVersion: v1
+kind: Config
+clusters:
+- name: "springboot"
+  cluster:
+    server: "https://44.195.131.223/k8s/clusters/c-m-8sr9pprv"
+    certificate-authority-data: "LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUJ2VENDQ\
+      VdPZ0F3SUJBZ0lCQURBS0JnZ3Foa2pPUFFRREFqQkdNUnd3R2dZRFZRUUtFeE5rZVc1aGJXbGoKY\
+      kdsemRHVnVaWEl0YjNKbk1TWXdKQVlEVlFRRERCMWtlVzVoYldsamJHbHpkR1Z1WlhJdFkyRkFNV\
+      GN6TWpRdwpOakl3TURBZUZ3MHlOREV4TWpNeU16VTJOREJhRncwek5ERXhNakV5TXpVMk5EQmFNR\
+      Vl4SERBYUJnTlZCQW9UCkUyUjVibUZ0YVdOc2FYTjBaVzVsY2kxdmNtY3hKakFrQmdOVkJBTU1IV\
+      1I1Ym1GdGFXTnNhWE4wWlc1bGNpMWoKWVVBeE56TXlOREEyTWpBd01Ga3dFd1lIS29aSXpqMENBU\
+      VlJS29aSXpqMERBUWNEUWdBRS9iZEVVZ2RyL0xKLwpYd3ZjTURiRjZHNWNaZEtUVjJucjNnTGJIQ\
+      URpYjc3Y2tKZk93WEZVT3ZqVk5qRFE3RENVdUlwOWlnOWlzcTJzClB2ZjFtanRMSGFOQ01FQXdEZ\
+      1lEVlIwUEFRSC9CQVFEQWdLa01BOEdBMVVkRXdFQi93UUZNQU1CQWY4d0hRWUQKVlIwT0JCWUVGT\
+      1JjS0Y5M2g4eUQ5RWFBYk9lWVFyVlpNSm9XTUFvR0NDcUdTTTQ5QkFNQ0EwZ0FNRVVDSVFEbgpUT\
+      jAyTXZqa1U4M29lbUwwajRzY3JkUjNiY3pubUw5VmliSHFBaXQrUlFJZ0pDZmhUcG9pOWdwenRnV\
+      HlhQ1JoCmY2YWV3VFZrdVN3TVhxL2RaeGt6YWlvPQotLS0tLUVORCBDRVJUSUZJQ0FURS0tLS0t"
+
+users:
+- name: "springboot"
+  user:
+    token: "kubeconfig-user-5hd46vjs5c:j6cpzzfb9dzzbt4c724rvv89qpqzc2xvnkbv8hcdhh4hdv4922nn6f"
+
+
+contexts:
+- name: "springboot"
+  context:
+    user: "springboot"
+    cluster: "springboot"
+
+current-context: "springboot"

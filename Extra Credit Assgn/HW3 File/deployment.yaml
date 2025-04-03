@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: surveyproject-deployment
+  labels:
+    app: surveyproject
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: surveyproject
+  template:
+    metadata:
+      labels:
+        app: surveyproject
+    spec:
+      containers:
+      - name: surveyproject
+        image: keerthana762docker/surveyproject:{{IMAGE_TAG}}
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8090
