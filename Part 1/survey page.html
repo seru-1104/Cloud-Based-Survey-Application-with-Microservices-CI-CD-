@@ -1,0 +1,187 @@
+<!-- Saranya Chakravarthy Korrapati (G01471987) -->
+
+<!-- This is an HTML file containing code for my survey page. It has various textboxes for taking information about the person, checkboxes, radio buttons, dropdowns, and text area 
+for collecting other information. -->
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Survey Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e9ecef; /* Light grey background color */
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #ffffff; /* White background for the form */
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            margin-top: 10px;
+            font-weight: bold;
+            color: #555;
+        }
+
+        input[type="text"], input[type="email"], input[type="tel"], input[type="date"], select, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        fieldset {
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 10px;
+            margin-top: 10px;
+            background-color: #f9f9f9; /* Light background color for fieldsets */
+        }
+
+        legend {
+            font-weight: bold;
+            color: #333;
+        }
+
+        .checkbox-group, .radio-group {
+            margin-top: 10px;
+        }
+
+        .checkbox-group label, .radio-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+        }
+
+        .buttons {
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        input[type="submit"], input[type="reset"] {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            color: #fff;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        input[type="submit"] {
+            background-color: #4CAF50;
+        }
+
+        input[type="reset"] {
+            background-color: #f44336;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        input[type="reset"]:hover {
+            background-color: #e53935;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Student Survey Form</h1>
+        <form action="/submit" method="post">
+            <!-- Required Text Boxes -->
+            <label for="firstName">First Name:</label>
+            <input type="text" id="firstName" name="firstName" required>
+
+            <label for="lastName">Last Name:</label>
+            <input type="text" id="lastName" name="lastName" required>
+
+            <label for="streetAddress">Street Address:</label>
+            <input type="text" id="streetAddress" name="streetAddress" required>
+
+            <label for="city">City:</label>
+            <input type="text" id="city" name="city" required>
+
+            <label for="state">State:</label>
+            <input type="text" id="state" name="state" required>
+
+            <label for="zip">Zip Code:</label>
+            <input type="text" id="zip" name="zip" required>
+
+            <label for="telephone">Telephone Number:</label>
+            <input type="tel" id="telephone" name="telephone" required>
+
+            <label for="email">E-mail:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="date">Date of Survey:</label>
+            <input type="date" id="date" name="date" required>
+
+            <!-- Checkboxes -->
+            <fieldset class="checkbox-group">
+                <legend>What did you like most about the campus?</legend>
+                <label><input type="checkbox" name="liked[]" value="students"> Students</label>
+                <label><input type="checkbox" name="liked[]" value="location"> Location</label>
+                <label><input type="checkbox" name="liked[]" value="campus"> Campus</label>
+                <label><input type="checkbox" name="liked[]" value="atmosphere"> Atmosphere</label>
+                <label><input type="checkbox" name="liked[]" value="dorms"> Dorm Rooms</label>
+                <label><input type="checkbox" name="liked[]" value="sports"> Sports</label>
+            </fieldset>
+
+            <!-- Radio Buttons -->
+            <fieldset class="radio-group">
+                <legend>How did you become interested in the university?</legend>
+                <label><input type="radio" name="interest" value="friends"> Friends</label>
+                <label><input type="radio" name="interest" value="television"> Television</label>
+                <label><input type="radio" name="interest" value="internet"> Internet</label>
+                <label><input type="radio" name="interest" value="other"> Other</label>
+            </fieldset>
+
+            <!-- Dropdown List -->
+            <label for="recommend">Likelihood of recommending this school:</label>
+            <select id="recommend" name="recommend">
+                <option value="very_likely">Very Likely</option>
+                <option value="likely">Likely</option>
+                <option value="unlikely">Unlikely</option>
+            </select>
+
+            <!-- Raffle Field -->
+            <label for="raffle">Raffle (Enter at least ten comma-separated numbers ranging from 1 to 100):</label>
+            <input type="text" id="raffle" name="raffle" pattern="\d+(,\d+){9,}" title="Enter at least ten comma-separated numbers ranging from 1 to 100" required>
+
+            <!-- Additional Comments -->
+            <label for="comments">Additional Comments:</label>
+            <textarea id="comments" name="comments" rows="4" cols="50"></textarea>
+
+            <!-- Buttons -->
+            <div class="buttons">
+                <input type="submit" value="Submit">
+                <input type="reset" value="Cancel">
+            </div>
+        </form>
+    </div>
+</body>
+</html>
